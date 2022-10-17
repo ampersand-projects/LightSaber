@@ -78,7 +78,7 @@ class YahooBenchmark : public BenchmarkQuery {
   std::vector<char> *m_data = nullptr;
   std::vector<char> *m_staticData = nullptr;
   bool m_debug = false;
-  bool m_is64 = false;
+  bool m_is64 = true;
 
   QueryApplication *getApplication() override {
     return m_application;
