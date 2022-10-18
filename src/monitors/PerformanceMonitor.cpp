@@ -29,6 +29,7 @@ PerformanceMonitor::PerformanceMonitor(QueryApplication &application) : m_applic
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 void PerformanceMonitor::operator()() {
+  int count = 0;
   while (true) {
     try {
       std::this_thread::sleep_for(std::chrono::milliseconds(SystemConf::getInstance().PERFORMANCE_MONITOR_INTERVAL));
@@ -40,7 +41,7 @@ void PerformanceMonitor::operator()() {
     m_dt = m_time - m__time;
 
     std::string builder;
-    builder.append("[MON]");
+    builder.append("Throughput(M/s) " + std::to_string(count++));
     auto currentMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     builder.append(" " + std::to_string(currentMs));
     for (int i = 0; i < m_size; i++)
