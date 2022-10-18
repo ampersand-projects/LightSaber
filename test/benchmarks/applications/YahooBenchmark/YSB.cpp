@@ -175,13 +175,13 @@ class YSB : public YahooBenchmark {
                                                     getStaticComputation(window));
 
     // Configure aggregation
-    std::vector<AggregationType> aggregationTypes(2);
+    std::vector<AggregationType> aggregationTypes(1);
     aggregationTypes[0] = AggregationTypes::fromString("cnt");
-    aggregationTypes[1] = AggregationTypes::fromString("max");
+    //aggregationTypes[1] = AggregationTypes::fromString("max");
 
-    std::vector<ColumnReference *> aggregationAttributes(2);
+    std::vector<ColumnReference *> aggregationAttributes(1);
     aggregationAttributes[0] = new ColumnReference(1 + incr, BasicType::Float);
-    aggregationAttributes[1] = new ColumnReference(0, BasicType::Float);
+    //aggregationAttributes[1] = new ColumnReference(0, BasicType::Float);
 
     std::vector<Expression *> groupByAttributes(1);
     if (m_is64)
@@ -199,7 +199,7 @@ class YSB : public YahooBenchmark {
     genCode->setInputSchema(getSchema());
     genCode->setSelection(selection);
     //genCode->setProjection(projection);
-    genCode->setStaticHashJoin(staticJoin);
+    //genCode->setStaticHashJoin(staticJoin);
     genCode->setAggregation(aggregation);
     genCode->setQueryId(0);
     genCode->setup();

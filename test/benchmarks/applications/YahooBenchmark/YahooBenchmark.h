@@ -126,9 +126,9 @@ class YahooBenchmark : public BenchmarkQuery {
     auto page_id = distr(eng);
     unsigned long idx = 0;
     while (idx < len / sizeof(InputSchema_64)) {
-      auto ad_id = staticBuf[((idx % 100000) % 1000) * 2];
+      auto ad_id = 0;
       auto ad_type = (idx % 100000) % 5;
-      auto event_type = (idx % 100000) % 3;
+      auto event_type = (idx % 5);
       line = std::to_string(idx / 1000) + " " + std::to_string(user_id) + " " + std::to_string(page_id) + " " +
           std::to_string(ad_id) + " " + std::to_string(ad_type) + " " + std::to_string(event_type) + " " +
           std::to_string(-1);
